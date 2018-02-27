@@ -29,12 +29,12 @@ def word2features(sent, i):
     sentence."""
     features = []
 
-    # word itself
-    features.append(('0word', sent[i][0]))
-
     # word before
     if i > 0:
         features.append(('-1word', sent[i-1][0]))
+
+    # word itself
+    features.append(('0word', sent[i][0]))
 
     # word after
     if i < len(sent)-1:
@@ -88,8 +88,8 @@ if __name__ == "__main__":
     X_train = generate_tensor(vectorizer, train_feats, training=True)
 
     # Train the model
-    model = Perceptron(verbose=True, max_iter=20)
-    # model = MLPClassifier(verbose=True, solver='lbfgs', max_iter=200)
+    # model = Perceptron(verbose=True, max_iter=20)
+    model = MLPClassifier(verbose=True, solver='lbfgs', max_iter=200)
     model.fit(X_train, train_labels)
 
     # Generate test tensor (switch to test_sents for submission output)

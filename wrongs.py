@@ -4,7 +4,7 @@ dev_sents = list(conll2002.iob_sents('esp.testa'))
 
 feats, labels = generate_features_and_labels(dev_sents)
 
-with open("results-mlp-lbfgs-200-pos1.txt", "r") as f:
+with open("results-mlp-lbfgs-200-0pos-prop.txt", "r") as f:
     line_count = 0
     wrong_count = 0
     for line in f:
