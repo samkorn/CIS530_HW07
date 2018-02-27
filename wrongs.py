@@ -15,5 +15,5 @@ with open("results-mlp-lbfgs-200-pos1.txt", "r") as f:
             wrong_count += 1
         line_count += 1
 
-print("\nTotal number wrong: %d" % (wrong_count))
+print("\nTotal number wrong: %d" % wrong_count)
 

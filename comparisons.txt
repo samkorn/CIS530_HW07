@@ -46,7 +46,7 @@ accuracy:  92.66%; precision:  47.11%; recall:  50.95%; FB1:  48.96
               ORG: precision:  48.47%; recall:  50.18%; FB1:  49.31  1760
               PER: precision:  54.16%; recall:  51.72%; FB1:  52.91  1167
 
-Perceptron (5) + POS 1-window 
+Perceptron (5) + 0POS
 processed 52923 tokens with 4351 phrases; found: 4965 phrases; correct: 2344.
 accuracy:  93.02%; precision:  47.21%; recall:  53.87%; FB1:  50.32
               LOC: precision:  46.09%; recall:  65.35%; FB1:  54.06  1395
@@ -54,7 +54,7 @@ accuracy:  93.02%; precision:  47.21%; recall:  53.87%; FB1:  50.32
               ORG: precision:  51.32%; recall:  53.59%; FB1:  52.43  1775
               PER: precision:  64.14%; recall:  52.54%; FB1:  57.76  1001
 
-MLP (lbfgs, 200) + POS 1-window
+MLP (lbfgs, 200) + 0POS
 processed 52923 tokens with 4351 phrases; found: 4283 phrases; correct: 2493.
 accuracy:  93.90%; precision:  58.21%; recall:  57.30%; FB1:  57.75
               LOC: precision:  59.79%; recall:  71.04%; FB1:  64.93  1169
@@ -62,14 +62,14 @@ accuracy:  93.90%; precision:  58.21%; recall:  57.30%; FB1:  57.75
               ORG: precision:  60.59%; recall:  57.53%; FB1:  59.02  1614
               PER: precision:  69.37%; recall:  55.24%; FB1:  61.50  973
 
-Perceptron (10) + POS 1-window
+Perceptron (10) + 0POS
 accuracy:  93.14%; precision:  55.02%; recall:  54.26%; FB1:  54.64
               LOC: precision:  55.45%; recall:  73.98%; FB1:  63.39  1313
              MISC: precision:  26.01%; recall:  30.34%; FB1:  28.01  519
               ORG: precision:  53.77%; recall:  49.88%; FB1:  51.75  1577
               PER: precision:  73.70%; recall:  53.19%; FB1:  61.79  882
 
-Perceptron (200) + POS 1-window
+Perceptron (200) + 0POS
 processed 52923 tokens with 4351 phrases; found: 4052 phrases; correct: 2250.
 accuracy:  93.00%; precision:  55.53%; recall:  51.71%; FB1:  53.55
               LOC: precision:  62.59%; recall:  59.35%; FB1:  60.93  933
@@ -77,17 +77,49 @@ accuracy:  93.00%; precision:  55.53%; recall:  51.71%; FB1:  53.55
               ORG: precision:  51.96%; recall:  55.24%; FB1:  53.55  1807
               PER: precision:  72.98%; recall:  48.85%; FB1:  58.53  818
 
-Perceptron (20) + POS 1-window
+Perceptron (20) + 0POS
 accuracy:  93.64%; precision:  55.86%; recall:  55.83%; FB1:  55.85
               LOC: precision:  59.76%; recall:  66.57%; FB1:  62.98  1096
              MISC: precision:  28.90%; recall:  30.79%; FB1:  29.82  474
               ORG: precision:  56.34%; recall:  53.59%; FB1:  54.93  1617
               PER: precision:  62.53%; recall:  59.41%; FB1:  60.93  1161
 
-Perceptron (30) + POS 1-window
+Perceptron (30) + 0POS
 processed 52923 tokens with 4351 phrases; found: 4362 phrases; correct: 2400.
 accuracy:  93.55%; precision:  55.02%; recall:  55.16%; FB1:  55.09
               LOC: precision:  58.82%; recall:  72.15%; FB1:  64.81  1207
              MISC: precision:  29.65%; recall:  30.11%; FB1:  29.88  452
               ORG: precision:  58.79%; recall:  48.76%; FB1:  53.31  1410
               PER: precision:  56.23%; recall:  59.49%; FB1:  57.81  1293
+
+Perceptron (20) + 0POS + -1POS&0POS
+processed 52923 tokens with 4351 phrases; found: 4456 phrases; correct: 2443.
+accuracy:  93.61%; precision:  54.82%; recall:  56.15%; FB1:  55.48
+              LOC: precision:  58.59%; recall:  69.31%; FB1:  63.50  1164
+             MISC: precision:  24.54%; recall:  29.66%; FB1:  26.86  538
+              ORG: precision:  56.12%; recall:  52.35%; FB1:  54.17  1586
+              PER: precision:  63.27%; recall:  60.47%; FB1:  61.84  1168
+
+Perceptron (20) + 0POS + -1POS
+processed 52923 tokens with 4351 phrases; found: 4338 phrases; correct: 2332.
+accuracy:  93.41%; precision:  53.76%; recall:  53.60%; FB1:  53.68
+              LOC: precision:  60.74%; recall:  62.09%; FB1:  61.41  1006
+             MISC: precision:  22.64%; recall:  31.24%; FB1:  26.25  614
+              ORG: precision:  52.91%; recall:  53.47%; FB1:  53.19  1718
+              PER: precision:  67.30%; recall:  55.07%; FB1:  60.58  1000
+
+MLP (lbfgs, 200) + 0POS + -1POS&0POS
+processed 52923 tokens with 4351 phrases; found: 4434 phrases; correct: 2531.
+accuracy:  94.01%; precision:  57.08%; recall:  58.17%; FB1:  57.62
+              LOC: precision:  59.34%; recall:  69.11%; FB1:  63.85  1146
+             MISC: precision:  25.44%; recall:  29.44%; FB1:  27.29  515
+              ORG: precision:  58.57%; recall:  57.71%; FB1:  58.13  1675
+              PER: precision:  67.30%; recall:  60.47%; FB1:  63.71  1098
+
+Perceptron (20) + 0POS + prop
+processed 52923 tokens with 4351 phrases; found: 5355 phrases; correct: 2875.
+accuracy:  94.53%; precision:  53.69%; recall:  66.08%; FB1:  59.24
+              LOC: precision:  57.49%; recall:  69.82%; FB1:  63.06  1195
+             MISC: precision:  27.74%; recall:  34.16%; FB1:  30.61  548
+              ORG: precision:  50.61%; recall:  63.82%; FB1:  56.45  2144
+              PER: precision:  64.78%; recall:  77.82%; FB1:  70.71  1468
