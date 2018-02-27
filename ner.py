@@ -5,23 +5,13 @@ from sklearn.ensemble import AdaBoostClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import precision_recall_fscore_support
 import numpy as np
+import re
+from collections import Set
+import feature_list as fl
 
 # Assignment 7: NER
 # This is just to help you get going. Feel free to
 # add to or modify any part of it.
-
-
-def proper_case_feature(sent, i):
-    word = sent[i][0]
-    if i == 0:
-        return "first"
-    elif word == word.upper():
-        return "cap"
-    elif word[0] == word[0].upper():
-        return "prop"
-    else:
-        return "low"
-
 
 def word2features(sent, i):
     """ The function generates all features
@@ -30,15 +20,23 @@ def word2features(sent, i):
     features = []
 
     # word before
+    # should we do something like <START>?
     if i > 0:
-        features.append(('-1word', sent[i-1][0]))
+        features.append(('-1word', sent[i - 1][0]))
+        features.append(('-1affix', fl.affix_feautre(sent, i - 1)))
+        features.append(('-1short_shape', fl.short_word_shape_feature(sent, i - 1)))
+        features.append(('-1gazetteer', fl.gazetteer_feature(sent, i - 1)))
 
     # word itself
     features.append(('0word', sent[i][0]))
 
     # word after
-    if i < len(sent)-1:
-        features.append(('+1word', sent[i+1][0]))
+    if i < len(sent) - 1:
+        features.append(('+1hyphen', fl.hyphen_feature(sent, i + 1)))
+        features.append(('+1word', sent[i + 1][0]))
+        features.append(('affix', fl.affix_feautre(sent, i + 1)))
+        features.append(('+1short_shape', fl.short_word_shape_feature(sent, i + 1)))
+        features.append(('+1gazetteer', fl.gazetteer_feature(sent, i + 1)))
 
     # part of speech (0)
     features.append(('0pos', sent[i][1]))
@@ -50,7 +48,19 @@ def word2features(sent, i):
     # features.append(('-1pos&0pos', sent[i-1][1]+"&"+sent[i][1]))
 
     # proper case
-    features.append(('prop', proper_case_feature(sent, i)))
+    features.append(('prop', fl.proper_case_feature(sent, i)))
+
+    # presence of hyphen
+    features.append(('hyphen', fl.hyphen_feature(sent, i)))
+
+    # gets the word's short shape
+    features.append(('short_shape', fl.short_word_shape_feature(sent, i)))
+
+    # if a popular affix in the training set is within the word
+    features.append(('affix', fl.affix_feautre(sent, i)))
+
+    # if the word is in the gazetteer set
+    features.append(('gazetteer', fl.gazetteer_feature(sent, i)))
 
     return dict(features)
 
@@ -61,7 +71,7 @@ def generate_features_and_labels(sentences):
 
     for sent in sentences:
         for i in range(len(sent)):
-            feats.append(word2features(sent,i))
+            feats.append(word2features(sent, i))
             labels.append(sent[i][-1])
 
     return feats, labels
@@ -109,8 +119,7 @@ if __name__ == "__main__":
                 gold = sent[i][-1]
                 pred = y_pred[j]
                 j += 1
-                out.write("{}\t{}\t{}\n".format(word,gold,pred))
+                out.write("{}\t{}\t{}\n".format(word, gold, pred))
         out.write("\n")
 
     print("Now run: python conlleval.py results.txt")
-

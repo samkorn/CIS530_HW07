@@ -233,7 +233,6 @@ def start_of_chunk(prev_tag, tag, prev_type, type_):
 
 def main(argv):
     args = parse_args(argv[1:])
-
     if args.file is None:
         counts = evaluate(sys.stdin, args)
     else:
@@ -242,4 +241,5 @@ def main(argv):
     report(counts)
 
 if __name__ == '__main__':
+    print(sys.argv)
     sys.exit(main(sys.argv))

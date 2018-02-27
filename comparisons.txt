@@ -131,3 +131,24 @@ accuracy:  94.77%; precision:  55.29%; recall:  64.44%; FB1:  59.52
              MISC: precision:  27.55%; recall:  36.40%; FB1:  31.36  588
               ORG: precision:  56.18%; recall:  63.06%; FB1:  59.42  1908
               PER: precision:  70.62%; recall:  67.27%; FB1:  68.90  1164
+
+MLP (lbfgs, 200) + new features
+accuracy:  94.75%; precision:  55.52%; recall:  63.69%; FB1:  59.32
+              LOC: precision:  52.88%; recall:  75.61%; FB1:  62.23  1407
+             MISC: precision:  25.61%; recall:  30.79%; FB1:  27.96  535
+              ORG: precision:  57.39%; recall:  62.59%; FB1:  59.88  1854
+              PER: precision:  69.12%; recall:  67.59%; FB1:  68.35  1195
+
+MLP (lbfgs, 200) + new features + gazetteer
+accuracy:  94.82%; precision:  55.59%; recall:  64.77%; FB1:  59.83
+              LOC: precision:  54.53%; recall:  75.91%; FB1:  63.47  1370
+             MISC: precision:  25.80%; recall:  34.38%; FB1:  29.48  593
+              ORG: precision:  57.65%; recall:  63.59%; FB1:  60.48  1875
+              PER: precision:  67.99%; recall:  68.49%; FB1:  68.24  1231
+
+MLP (lbfgs, 200) + new features + gazetteer + prefix and sufix with new features and gazetteer
+accuracy:  95.16%; precision:  57.38%; recall:  66.33%; FB1:  61.53
+              LOC: precision:  53.16%; recall:  73.48%; FB1:  61.69  1360
+             MISC: precision:  24.76%; recall:  34.16%; FB1:  28.71  614
+              ORG: precision:  58.85%; recall:  65.35%; FB1:  61.93  1888
+              PER: precision:  77.05%; recall:  73.65%; FB1:  75.31  1168
