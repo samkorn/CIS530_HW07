@@ -103,7 +103,7 @@ if __name__ == "__main__":
     model.fit(X_train, train_labels)
 
     # Generate test tensor (switch to test_sents for submission output)
-    test_feats, test_labels = generate_features_and_labels(dev_sents)
+    test_feats, test_labels = generate_features_and_labels(test_sents)
     X_test = generate_tensor(vectorizer, test_feats)
 
     # Generate labels using trained model
@@ -113,7 +113,7 @@ if __name__ == "__main__":
     print("Writing to results.txt")
     # format is: word gold pred
     with open("results.txt", "w") as out:
-        for sent in dev_sents:
+        for sent in test_sents:
             for i in range(len(sent)):
                 word = sent[i][0]
                 gold = sent[i][-1]
