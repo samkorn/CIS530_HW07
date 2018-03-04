@@ -23,7 +23,7 @@ def word2features(sent, i):
     # should we do something like <START>?
     if i > 0:
         features.append(('-1word', sent[i - 1][0]))
-        features.append(('-1affix', fl.affix_feautre(sent, i - 1)))
+        features.append(('-1affix', fl.affix_feature(sent, i - 1)))
         features.append(('-1short_shape', fl.short_word_shape_feature(sent, i - 1)))
         features.append(('-1gazetteer', fl.gazetteer_feature(sent, i - 1)))
 
@@ -34,7 +34,7 @@ def word2features(sent, i):
     if i < len(sent) - 1:
         features.append(('+1hyphen', fl.hyphen_feature(sent, i + 1)))
         features.append(('+1word', sent[i + 1][0]))
-        features.append(('affix', fl.affix_feautre(sent, i + 1)))
+        features.append(('affix', fl.affix_feature(sent, i + 1)))
         features.append(('+1short_shape', fl.short_word_shape_feature(sent, i + 1)))
         features.append(('+1gazetteer', fl.gazetteer_feature(sent, i + 1)))
 
@@ -57,7 +57,7 @@ def word2features(sent, i):
     features.append(('short_shape', fl.short_word_shape_feature(sent, i)))
 
     # if a popular affix in the training set is within the word
-    features.append(('affix', fl.affix_feautre(sent, i)))
+    features.append(('affix', fl.affix_feature(sent, i)))
 
     # if the word is in the gazetteer set
     features.append(('gazetteer', fl.gazetteer_feature(sent, i)))

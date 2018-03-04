@@ -15,7 +15,7 @@ def gazetteer_feature(sent, i):
         return 0
 
 
-def affix_feautre(sent, i):
+def affix_feature(sent, i):
     word = sent[i][0]
     if len(word) < 4:
         return "false"
